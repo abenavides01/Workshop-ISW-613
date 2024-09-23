@@ -7,22 +7,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styless.css">
 </head>
-<body>
-    <h2>Formulario de Registro</h2>
-    <form action="insertar.php" method="POST">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header custom-bg-red text-white text-center">
+                        <h3>Formulario de Registro</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="insertar.php" method="POST">
+                            <div class="form-group mb-3">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="apellido" class="form-label">Apellido:</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="telefono" class="form-label">Teléfono:</label>
+                                <input type="text" id="telefono" name="telefono" class="form-control" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="correo" class="form-label">Correo:</label>
+                                <input type="email" id="correo" name="correo" class="form-control" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <label for="apellido">Apellido:</label><br>
-        <input type="text" id="apellido" name="apellido" required><br><br>
-
-        <label for="telefono">Teléfono:</label><br>
-        <input type="text" id="telefono" name="telefono" required><br><br>
-
-        <label for="correo">Correo:</label><br>
-        <input type="email" id="correo" name="correo" required><br><br>
-
-        <input type="submit" value="Registrar">
-    </form>
-</body>
+    </body>
 </html>

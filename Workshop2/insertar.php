@@ -1,12 +1,12 @@
 <?php
 // Configurar los detalles de la conexión a la base de datos
 $host = "localhost";
-$usuario = "root";  // Cambia por tu usuario de MySQL
-$contraseña = "";   // Cambia por tu contraseña de MySQL
-$base_de_datos = "mi_base_de_datos";  // Cambia por el nombre de tu base de datos
+$user = "sa";  
+$password = "sql123";
+$database = "workshop2"; 
 
 // Crear la conexión
-$conn = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+$conn = new mysqli($host, $user, $password, $database);
 
 // Comprobar la conexión
 if ($conn->connect_error) {
@@ -14,14 +14,14 @@ if ($conn->connect_error) {
 }
 
 // Obtener los datos del formulario
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$telefono = $_POST['telefono'];
-$correo = $_POST['correo'];
+$name = $_POST['name'];
+$lastName = $_POST['lastName'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
 
 // Preparar e insertar los datos en la base de datos
-$sql = "INSERT INTO usuarios (nombre, apellido, telefono, correo) 
-        VALUES ('$nombre', '$apellido', '$telefono', '$correo')";
+$sql = "INSERT INTO users (name, lastName, email, phone ) 
+        VALUES ('$name', '$lastName', '$email', '$phone')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Registro exitoso";

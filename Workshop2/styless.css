@@ -1,0 +1,50 @@
+/* estilos.css */
+
+/* Fondo del formulario con borde redondeado */
+.card {
+    border-radius: 15px;
+}
+
+/* Ajuste de márgenes y sombra en el formulario */
+.container {
+    margin-top: 50px;
+}
+
+/* Personalización de los campos de texto */
+input.form-control {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.custom-bg-red {
+    background-color: #b30600; /* Rojo personalizado */
+}
+
+/* Estilo del botón */
+.btn-primary {
+    background-color: #b30600;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #b30600;
+}
+
+
+/* Fondo para el cuerpo */
+body {
+    background-color: rgb(148, 148, 147);
+}
+
+/* Estilos para mejorar la visualización en pantallas móviles */
+@media (max-width: 576px) {
+    .container {
+        margin-top: 20px;
+    }
+    .card {
+        padding: 10px;
+    }
+}
