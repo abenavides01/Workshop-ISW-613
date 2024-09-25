@@ -20,6 +20,13 @@ input.form-control {
     background-color: #b30600; /* Rojo personalizado */
 }
 
+/*Contenedor del boton*/
+.container-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
 /* Estilo del botón */
 .btn-primary {
     background-color: #b30600;

@@ -26,13 +26,22 @@ $phone = @$_REQUEST["phone"];
                     <div class="card-body">
                         <form action="insertar.php" method="POST">
                             <div class="form-group">
-                                <label for="">Nombre</label>
-                                <input type="text" class="form-control" name="name" id="" value="<?php echo $name; ?>"placeholder="Your name">
-                                <input type="text" class="form-control" name="lastname" id=""value="<?php echo $lastName; ?>" placeholder="Your last name">
-                                <input type="text" class="form-control" name="email" id="" value="<?php echo $email; ?>"placeholder="Your email">
-                                <input type="text" class="form-control" name="phone" id="" value="<?php echo $phone; ?>"placeholder="Your phone">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" id="" value="<?php echo $name; ?>"
+                                    placeholder="Your name">
+                                <label for="">Last Name</label>
+                                <input type="text" class="form-control" name="lastname" id=""
+                                    value="<?php echo $lastName; ?>" placeholder="Your last name">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control" name="email" id="" value="<?php echo $email; ?>"
+                                    placeholder="Your email">
+                                <label for="">Phone</label>
+                                <input type="text" class="form-control" name="phone" id="" value="<?php echo $phone; ?>"
+                                    placeholder="Your phone">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="container-btn">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
