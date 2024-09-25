@@ -1,9 +1,41 @@
 <?php
-$name = @$_REQUEST["name"];
-$lastName = @$_REQUEST["lastname"];
-$email = @$_REQUEST["email"];
-$phone = @$_REQUEST["phone"];
+// Verificar si el formulario fue enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario
+    $name = $_POST['name'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+
+    // Conexión a la base de datos
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "workshop2";
+
+    // Crear conexión
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verificar conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+
+    // Preparar y ejecutar la consulta SQL
+    $sql = "INSERT INTO users (name, lastName, email, phone) 
+            VALUES ('$name', '$lastName', '$email', '$phone')";
+
+    if ($conn->query($sql) === TRUE) {
+        $mensaje = "Datos insertados correctamente";
+    } else {
+        $mensaje = "Error al insertar datos: " . $conn->error;
+    }
+
+    // Cerrar la conexión
+    $conn->close();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,22 +56,30 @@ $phone = @$_REQUEST["phone"];
                         <h3>Formulario de Registro</h3>
                     </div>
                     <div class="card-body">
-                        <form action="insertar.php" method="POST">
-                            <div class="form-group">
-                                <label for="">Name</label>
-                                <input type="text" class="form-control" name="name" id="" value="<?php echo $name; ?>"
-                                    placeholder="Your name">
-                                <label for="">Last Name</label>
-                                <input type="text" class="form-control" name="lastname" id=""
-                                    value="<?php echo $lastName; ?>" placeholder="Your last name">
-                                <label for="">Email</label>
-                                <input type="text" class="form-control" name="email" id="" value="<?php echo $email; ?>"
-                                    placeholder="Your email">
-                                <label for="">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="" value="<?php echo $phone; ?>"
-                                    placeholder="Your phone">
+
+                        <!-- Mostrar mensaje de éxito o error -->
+                        <?php if (!empty($mensaje)) { ?>
+                            <div class="alert alert-info text-center">
+                                <?php echo $mensaje; ?>
                             </div>
-                            <div class="container-btn">
+                        <?php } ?>
+
+                        <!-- Formulario de registro -->
+                        <form action="" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" id="name" value="<?php echo isset($name) ? $name : ''; ?>" placeholder="Your name">
+                                
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo isset($lastName) ? $lastName : ''; ?>" placeholder="Your last name">
+                                
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" value="<?php echo isset($email) ? $email : ''; ?>" placeholder="Your email">
+                                
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" name="phone" id="phone" value="<?php echo isset($phone) ? $phone : ''; ?>" placeholder="Your phone">
+                            </div>
+                            <div class="container-btn mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

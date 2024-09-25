@@ -1,34 +1,36 @@
 <?php
-// Configurar los detalles de la conexión a la base de datos
-$host = "localhost";
-$user = "sa";  
-$password = "sql123";
-$database = "workshop2"; 
+echo ("The Name is " . $_POST['name'] . "<br>");
+echo ("The Last Name is " . $_POST['lastName'] . "<br>");
+echo ("The email is " . $_POST['email'] . "<br>");
+echo ("The phone Number is " . $_POST['phone'] . "<br>");
+?>
 
-// Crear la conexión
-$conn = new mysqli($host, $user, $password, $database);
+<?php
 
-// Comprobar la conexión
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "personal_information";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
 if ($conn->connect_error) {
-    die("Error en la conexión: " . $conn->connect_error);
+    die("Conexión fallida: " . $conn->connect_error);
 }
+echo "Conexión exitosa<br>";
 
-// Obtener los datos del formulario
-$name = $_POST['name'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-
-// Preparar e insertar los datos en la base de datos
-$sql = "INSERT INTO users (name, lastName, email, phone ) 
-        VALUES ('$name', '$lastName', '$email', '$phone')";
+$sql = "INSERT INTO information (name, lastname, email, phone)
+        VALUES ('" . $_POST['name'] . "', '" . $_POST['lastName'] . "', '" . $_POST['email'] . "', '" . $_POST['phone'] . "')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Registro exitoso";
+    echo "Datos insertados";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error al insertar datos: " . $conn->error;
 }
 
-// Cerrar la conexión
 $conn->close();
+
+
 ?>
