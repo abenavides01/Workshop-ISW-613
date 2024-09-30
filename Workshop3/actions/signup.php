@@ -11,7 +11,7 @@ if ($_POST && $_REQUEST['firstname']) {
 
 
     if (saveUser($user)) {
-        header("Location: ../actions/users.php ", );
+        header("Location: ../actions/users.php " );
     } else {
         header("Location: /?error=Invalid user data");
     }
