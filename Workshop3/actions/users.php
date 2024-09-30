@@ -29,15 +29,15 @@ mysqli_close($connection);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="estilos.css"> <!-- Enlace al archivo de estilos -->
+    <link rel="stylesheet" href="styless.css">
 </head>
 
 <body>
     <div class="container">
         <h1 class="my-4">Registered Users</h1>
-        <div class="card">
-            <table class="table table-bordered">
-                <thead>
+        <div class="card p-4">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -47,7 +47,6 @@ mysqli_close($connection);
                 </thead>
                 <tbody>
                     <?php
-                    // Mostrar los usuarios en la tabla
                     foreach ($users as $user) {
                         echo "<tr>
                                 <td>{$user['name']}</td>

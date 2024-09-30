@@ -38,7 +38,7 @@ input.form-control {
 }
 
 .btn-primary:hover {
-    background-color: #b30600;
+    background-color: #a20500; /* Color más oscuro al pasar el ratón */
 }
 
 /* Fondo para el cuerpo */
@@ -53,5 +53,34 @@ body {
     }
     .card {
         padding: 10px;
+    }
+}
+
+/* Estilo de la tabla */
+.table {
+    border-radius: 10px;
+    overflow: hidden; /* Para esquinas redondeadas */
+}
+
+/* Fila de encabezado de la tabla */
+.thead-dark th {
+    background-color: #b30600; /* Color personalizado para el encabezado */
+    color: white; /* Texto en blanco para mejor contraste */
+}
+
+/* Filas alternas */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(179, 6, 0, 0.1); /* Color ligero para filas impares */
+}
+
+/* Estilo de las celdas */
+.table td, .table th {
+    padding: 15px; /* Espaciado en celdas */
+}
+
+/* Estilo para la tabla en pantallas pequeñas */
+@media (max-width: 576px) {
+    .table {
+        font-size: 14px; /* Tamaño de fuente más pequeño */
     }
 }
