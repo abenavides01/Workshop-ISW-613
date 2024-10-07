@@ -11,7 +11,7 @@ if($_POST && isset($_REQUEST['firstName'])) {
 
 
   if (saveUser($user)) {
-    header( "Location: /",);
+    header( "Location: /index.php",);
   } else {
     header( "Location: /?error=Invalid user data");
   }

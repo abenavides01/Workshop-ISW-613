@@ -17,10 +17,10 @@ $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" id="navId">
     <li class="nav-item">
-      <a href="/signup.php" class="nav-link active">Signup</a>
+      <a href="/actions/signup.php" class="nav-link active">Signup</a>
     </li>
     <li class="nav-item">
-      <a href="/" class="nav-link active">Login</a>
+      <a href="/index.php" class="nav-link active">Login</a>
     </li>
     <li class="nav-item">
       <a href="/actions/logout.php" class="nav-link active">Logout</a>
