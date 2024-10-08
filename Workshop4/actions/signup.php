@@ -1,7 +1,7 @@
 <?php
 require '../utils/functions.php';
 
-if($_POST && isset($_REQUEST['firstname'])) {
+if ($_POST && isset($_REQUEST['firstname'])) {
   //get each field and insert to the database
   $user['firstname'] = $_REQUEST['firstname'];
   $user['lastname'] = $_REQUEST['lastname'];
@@ -12,8 +12,8 @@ if($_POST && isset($_REQUEST['firstname'])) {
 
 
   if (saveUser($user)) {
-    header( "Location: ../users.php",);
+    header("Location: ../users.php", );
   } else {
-    header( "Location: /?error=Invalid user data");
+    header("Location: /?error=Invalid user data");
   }
 }

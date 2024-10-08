@@ -4,7 +4,8 @@
  * @param mixed $user
  * @return bool
  */
-function updateUser($user): bool {
+function updateUser($user): bool
+{
     // Verify checkbox
     if (!isset($user['checkbox']) || $user['checkbox'] !== 'on') {
         // If checkbox not on, changes nothing
@@ -25,13 +26,13 @@ function updateUser($user): bool {
         mysqli_query($conn, $sql);
         $conn->close();
         $_SESSION['success_message'] = "¡El cambio se realizó exitosamente!";
-        header('Location: /principal.php'); 
-        exit();           
+        header('Location: /principal.php');
+        exit();
     } catch (Exception $e) {
         echo $e->getMessage();
         return false;
-        
+
     }
     return true;
-    
+
 }

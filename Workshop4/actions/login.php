@@ -1,4 +1,3 @@
-
 <?php
 require('../utils/functions.php');
 
@@ -11,9 +10,9 @@ if ($_POST) {
 
     if ($user) {
         session_start();
-        echo"animsdnad";
+        echo "animsdnad";
         $_SESSION['user'] = $user; // Almacena los datos del usuario en la sesión
-        
+
         // Verifica el rol del usuario
         if ($user['role'] == 'admin') {
             header('Location: /principal.php'); // Redirige a la página de administrador "principal"

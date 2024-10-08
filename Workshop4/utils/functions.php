@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Summary of getProvinces
@@ -8,20 +7,21 @@ function getProvinces(): array
 {
   $conn = getConnection();
   if (!$conn) {
-      return [];
+    return [];
   }
 
   $provinces = [];
   $result = mysqli_query($conn, "SELECT id, name FROM provinces");
   if ($result) {
-      while ($row = mysqli_fetch_assoc($result)) {
-          $provinces[$row['id']] = $row['name'];
-      }
+    while ($row = mysqli_fetch_assoc($result)) {
+      $provinces[$row['id']] = $row['name'];
+    }
   }
   return $provinces;
 }
 
-function getConnection(): bool|mysqli {
+function getConnection(): bool|mysqli
+{
   $connection = mysqli_connect('localhost:3306', 'root', '', 'workshop4');
   return $connection;
 }
@@ -31,14 +31,15 @@ function getConnection(): bool|mysqli {
  * @param mixed $user
  * @return bool
  */
-function saveUser($user): bool{
+function saveUser($user): bool
+{
 
   $firstname = $user['firstname'];
   $lastname = $user['lastname'];
   $username = $user['username'];
   $province_id = $user['province_id'];
   $password = md5($user['password']);
-  $role_id = 2; 
+  $role_id = 2;
   $sql = "INSERT INTO users (firstname, lastname, username, province_id, password, role_id) VALUES('$firstname', '$lastname', '$username', '$province_id', '$password', '$role_id')";
 
   try {
@@ -57,7 +58,8 @@ function saveUser($user): bool{
  * @param mixed $password
  * @return bool|array|null
  */
-function authenticate($username, $password): bool|array|null{
+function authenticate($username, $password): bool|array|null
+{
   $conn = getConnection();
   $password = md5($password);
   $sql = "SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password'";
@@ -66,20 +68,20 @@ function authenticate($username, $password): bool|array|null{
   if ($conn->connect_errno) {
     $conn->close();
     return false;
-    
+
   }
   $results = $result->fetch_array();
-  
+
   if ($results) {
     // Check ID for admin or standart user
     if ($results['role_id'] == 1) {
-        $results['role'] = 'admin'; // Asign admin rol
+      $results['role'] = 'admin'; // Asign admin rol
     } else {
-        $results['role'] = 'standard'; // Asign standart rol
+      $results['role'] = 'standard'; // Asign standart rol
     }
     $conn->close();
     return $results; // Return with roles added
-}
+  }
 
-return null; // If there's no user
+  return null; // If there's no user
 }
