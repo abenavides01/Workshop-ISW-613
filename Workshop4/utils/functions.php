@@ -1,12 +1,24 @@
 
 <?php
-
 /**
- *  Gets the provinces from the database
+ * Summary of getProvinces
+ * @return array
  */
-function getProvinces(): array {
-  //select * from provinces
-  return [2 => 'Alajuela', 1=> 'San Jose', 3 => 'Cartago', 4 => 'Heredia', 7 => 'Limon', 6 => 'Puntarenas', 5 => 'Guanacaste'];
+function getProvinces(): array
+{
+  $conn = getConnection();
+  if (!$conn) {
+      return [];
+  }
+
+  $provinces = [];
+  $result = mysqli_query($conn, "SELECT id, name FROM provinces");
+  if ($result) {
+      while ($row = mysqli_fetch_assoc($result)) {
+          $provinces[$row['id']] = $row['name'];
+      }
+  }
+  return $provinces;
 }
 
 function getConnection(): bool|mysqli {
@@ -15,7 +27,9 @@ function getConnection(): bool|mysqli {
 }
 
 /**
- * Saves an specific user into the database
+ * Summary of saveUser
+ * @param mixed $user
+ * @return bool
  */
 function saveUser($user): bool{
 
@@ -38,9 +52,10 @@ function saveUser($user): bool{
 }
 
 /**
- * Get one specific student from the database
- *
- * @id Id of the student
+ * Summary of authenticate
+ * @param mixed $username
+ * @param mixed $password
+ * @return bool|array|null
  */
 function authenticate($username, $password): bool|array|null{
   $conn = getConnection();
