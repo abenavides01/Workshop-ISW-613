@@ -1,5 +1,11 @@
 <?php 
 include('../utils/functions.php');
+
+/**
+ * Summary of deleteUser
+ * @param mixed $user_id
+ * @return bool
+ */
 function deleteUser($user_id): bool {
     $sql = "DELETE FROM users WHERE id = '$user_id'";
     
@@ -16,5 +22,3 @@ function deleteUser($user_id): bool {
     }
     return true;
 }
-
-?>  

@@ -24,4 +24,3 @@ if ($_POST) {
         header('Location: /index.php?error=login'); // Redirige en caso de error en el login
     }
 }
-?>
