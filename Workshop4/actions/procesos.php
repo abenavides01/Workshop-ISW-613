@@ -1,6 +1,6 @@
 <?php
 include('index.php');
-include('update_user.php');
+include('updateUser.php');
 include('deleteUser.php');
 session_start();
 
