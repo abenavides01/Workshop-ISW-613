@@ -1,28 +1,18 @@
 <?php
 session_start();
 $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-$name = "";
-
-// "if" for delete a warning on header, then just call $name
-if ($user == null) {
-  $name = "";
-} else {
-  $name = $user['firstname'];
-}
-
-?>
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
+  <title>Sign up</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-
 <body>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" id="navId">
@@ -40,7 +30,6 @@ if ($user == null) {
       <a href="/users.php" class="nav-link">Users</a>
     </li>
     <li>
-      Hola <?php echo $name;
-      ?>
+      Hola <?php echo $user['name']; ?>
     </li>
   </ul>
