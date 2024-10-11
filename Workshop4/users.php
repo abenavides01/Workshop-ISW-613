@@ -8,7 +8,7 @@
       <p class="lead">List of users</p>
       <hr class="my-4">
     </div>
-    <table class="table">
+    <table class="table-striped">
       <thead>
         <tr>
           <th>First Name</th>
