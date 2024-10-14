@@ -79,4 +79,22 @@ function authenticate($username, $password): bool|array|null
   $conn->close();
   return $results;
 }
-?>
+
+/**
+ * Summary of updateLastLogin
+ * @param mixed $userId
+ * @param mixed $lastLogin
+ * @return bool
+ */
+function updateLastLogin($userId, $lastLogin) {
+  $conn = getConnection();
+  if (!$conn) {
+      return false;
+  }
+
+  $sql = "UPDATE users SET last_login_datetime = ? WHERE id = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("si", $lastLogin, $userId);
+
+  return $stmt->execute();
+}

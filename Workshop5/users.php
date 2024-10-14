@@ -21,7 +21,8 @@ $result = mysqli_query($conn, $sql);
         <th>Last Name</th>
         <th>Username</th>
         <th>Province</th>
-        <th>Password</th>
+        <th>Status</th>
+        <th>Login Date Time</th>
         <th></th>
       </tr>
     </thead>
@@ -35,7 +36,8 @@ $result = mysqli_query($conn, $sql);
           <td><?php echo htmlspecialchars($row['lastname']); ?></td>
           <td><?php echo htmlspecialchars($row['username']); ?></td>
           <td><?php echo htmlspecialchars($row['province']); ?></td>
-          <td><?php echo htmlspecialchars($row['password']); ?></td>
+          <td><?php echo htmlspecialchars($row['status']); ?></td>
+          <td><?php echo htmlspecialchars($row['last_loging_datetime']); ?></td>
           <td>
             <a href="actions/Update.php?id=<?php echo urlencode($row['id']); ?>" class="btn btn-warning">Editar</a>
             <a href="actions/delete.php?id=<?php echo urlencode($row['id']); ?>" class="btn btn-danger">Eliminar</a>
