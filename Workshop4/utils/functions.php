@@ -7,22 +7,23 @@
  */
 function getProvinces(): array
 {
-    $conn = getConnection();
-    if (!$conn) {
-        return [];
-    }
+  $conn = getConnection();
+  if (!$conn) {
+    return [];
+  }
 
-    $provinces = [];
-    $result = mysqli_query($conn, "SELECT id, name FROM provinces");
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $provinces[$row['id']] = $row['name'];
-        }
+  $provinces = [];
+  $result = mysqli_query($conn, "SELECT id, name FROM provinces");
+  if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $provinces[$row['id']] = $row['name'];
     }
-    return $provinces;
+  }
+  return $provinces;
 }
 
-function getConnection(): bool|mysqli {
+function getConnection(): bool|mysqli
+{
   $connection = mysqli_connect('localhost:3306', 'root', '', 'workshop4');
   return $connection;
 }
@@ -31,16 +32,18 @@ function getConnection(): bool|mysqli {
  * Summary of saveUser
  * @param mixed $user
  * @return bool
- *Saves an specific user into the database
+ * Saves an specific user into the database
  */
-function saveUser($user): bool{
+function saveUser($user): bool
+{
 
   $firstName = $user['firstName'];
   $lastName = $user['lastName'];
   $username = $user['email'];
+  $opcionSeleccionada = $_POST['province'];
   $password = md5($user['password']);
 
-  $sql = "INSERT INTO users (name, lastname, username, password) VALUES('$firstName', '$lastName', '$username','$password')";
+  $sql = "INSERT INTO users (name, lastname, username, province, password) VALUES('$firstName', '$lastName', '$username','$opcionSeleccionada','$password')";
 
   try {
     $conn = getConnection();
@@ -58,9 +61,11 @@ function saveUser($user): bool{
  * @param mixed $password
  * @return bool|array|null
  * Get one specific student from the database
+ *
  * @id Id of the student
  */
-function authenticate($username, $password): bool|array|null{
+function authenticate($username, $password): bool|array|null
+{
   $conn = getConnection();
   $password = md5($password);
   $sql = "SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password'";
@@ -74,3 +79,4 @@ function authenticate($username, $password): bool|array|null{
   $conn->close();
   return $results;
 }
+?>
